@@ -10,16 +10,74 @@
     <title>Weather Dashboard</title>
 </head>
 <body>
-    <header class="h2 bg-info text-center">Weather Dashboard</header>
-    <main class="container p-1">
+    <div class="p-2">
+        <header class="h2 bg-primary p-2 text-white font-weight-bold text-center">Weather Dashboard</header>
+    </div>
+    <main class="p-1">
         <div class="row m-auto p-1">
             <nav class="col-12 col-md-3">
                 <form id="search-form" class="pb-2 border-bottom border-secondary">
-                    <label for="city">Search for a City:</label>
-                    <input type="text" name="city" id="city" placeholder="Search for a City" autofocus="true" class="form-control d-block rounded" />
-                    <button class="btn" id="search-btn">Search</button>
+                    <label class="h3 font-weight-bold" for="city">Search for a City:</label>
+                    <input type="text" name="city" id="city" placeholder="Enter city name" autofocus="true" class="form-control d-block rounded" />
+                    <button type="button" class="btn btn-block btn-primary d-block text-center bg-primary mt-2" id="search-btn">Search</button>
                 </form>
+                <div id="search-history">
+                    <!-- previously searched cities -->
+                </div>
             </nav>
+            <div class="col-12 col-md-9 align-item-center">
+                <div class="row p-2 mt-2 border border-primary rounded d-block">
+                    <h4 id="city-header">
+                        <span id="city-name"></span>
+                        <span id="date"></span>
+                        <img src="" alt="" id="weather-icon">
+                    </h4>
+                    <div class="temp">Temp:</div>
+                    <div class="wind">Wind:</div>
+                    <div class="humidity">Humidity:</div>
+                    <div class="uv">UV Index:</div>
+                </div>
+                <div class="row p-1 mt-1 d-block forecast">
+                    <h5>5-Day Forecast:</h5>
+                    <div class="row m-auto justify-content-around" id="forecast">
+                        <card class="col-2 col-md-5 col-xl-2 mt-2 bg-secondary text-white text-weight-bold" id="day1">
+                            <span class="forecast-date"></span>
+                            <span class="forecast-img"></span>
+                            <span class="forecast-temp"></span>
+                            <span class="forecast-wind"></span>
+                            <span class="forecast-humidity"></span>
+                        </card>
+                        <card class="col-2 col-md-5 col-xl-2 mt-2 bg-secondary" id="day2">
+                            <span class="forecast-date"></span>
+                            <span class="forecast-img"></span>
+                            <span class="forecast-temp"></span>
+                            <span class="forecast-wind"></span>
+                            <span class="forecast-humidity"></span>
+                        </card>
+                        <card class="col-2 col-md-5 col-xl-2 mt-2 bg-secondary" id="day3">
+                            <span class="forecast-date"></span>
+                            <span class="forecast-img"></span>
+                            <span class="forecast-temp"></span>
+                            <span class="forecast-wind"></span>
+                            <span class="forecast-humidity"></span>
+                        </card>
+                        <card class="col-2 col-md-5 col-xl-2 mt-2 bg-secondary" id="day4">
+                            <span class="forecast-date"></span>
+                            <span class="forecast-img"></span>
+                            <span class="forecast-temp"></span>
+                            <span class="forecast-wind"></span>
+                            <span class="forecast-humidity"></span>
+                        </card>
+                        <card class="col-2 col-md-5 col-xl-2 mt-2 bg-secondary" id="day5">
+                            <span class="forecast-date"></span>
+                            <span class="forecast-img"></span>
+                            <span class="forecast-temp"></span>
+                            <span class="forecast-wind"></span>
+                            <span class="forecast-humidity"></span>
+                        </card>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
