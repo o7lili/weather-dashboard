@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 header {
-    background-image: linear-gradient(to right, blue, indigo);
+    background-image: linear-gradient(to right, rgb(0, 110, 255), indigo);
 }

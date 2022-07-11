@@ -26,16 +26,26 @@
                 </div>
             </nav>
             <div class="col-12 col-md-9 align-item-center">
-                <div class="row p-2 mt-2 border border-primary rounded d-block">
-                    <h4 id="city-header">
-                        <span id="city-name"></span>
-                        <span id="date"></span>
-                        <img src="" alt="" id="weather-icon">
-                    </h4>
-                    <div class="temp">Temp:</div>
-                    <div class="wind">Wind:</div>
-                    <div class="humidity">Humidity:</div>
-                    <div class="uv">UV Index:</div>
+                <div id="weather" class="row  p-2 mt-2 border border-primary rounded d-block">
+                    <div id="weather-header" class="row align-item-center font-weight-bold col-12 col-md-9">
+                        <h3 id="weather-city" class="p-1"></h3>
+                        <img alt="" id="weather-icon">
+                    </div>
+                    <div id="weather-info" class="col-12 col-md-9">
+                        <p class="temp row">
+                            <span id="weather-temp"></span>
+                        </p>
+                        <p class="wind row">
+                            <span id="weather-wind"></span>
+                        </p>
+                        <p class="humidity row">
+                            <span id="weather-humidity"></span>
+                        </p>
+                        <p class="uv row">
+                            UV Index: 
+                            <span id="weather-uvi"></span>
+                        </p>
+                    </div>
                 </div>
                 <div class="row p-1 mt-1 d-block forecast">
                     <h5>5-Day Forecast:</h5>
@@ -83,8 +93,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-ui-touch-punch@0.2.3/jquery.ui.touch-punch.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
