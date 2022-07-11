@@ -7,3 +7,7 @@
 header {
     background-image: linear-gradient(to right, rgb(0, 110, 255), indigo);
 }
+
+.card {
+    background-image: linear-gradient(to bottom, rgb(49, 54, 85), rgb(7, 7, 88))
+}

@@ -15,6 +15,7 @@
     </div>
     <main class="p-1">
         <div class="row m-auto p-1">
+            <!-- search form -->
             <nav class="col-12 col-md-3">
                 <form id="search-form" class="pb-2 border-bottom border-secondary">
                     <label class="h3 font-weight-bold" for="city">Search for a City:</label>
@@ -25,8 +26,9 @@
                     <!-- previously searched cities -->
                 </div>
             </nav>
+            <!-- user searched city current weather info -->
             <div class="col-12 col-md-9 align-item-center">
-                <div id="weather" class="row  p-2 mt-2 border border-primary rounded d-block">
+                <div id="weather" class="row  p-2 mt-2 border border-primary rounded container ">
                     <div id="weather-header" class="row align-item-center font-weight-bold col-12 col-md-9">
                         <h3 id="weather-city" class="p-1"></h3>
                         <img alt="" id="weather-icon">
@@ -47,44 +49,11 @@
                         </p>
                     </div>
                 </div>
-                <div class="row p-1 mt-1 d-block forecast">
+                <!-- 5-day forecast weather info -->
+                <div class="row p-1 mt-1 d-block forecast container">
                     <h5>5-Day Forecast:</h5>
-                    <div class="row m-auto justify-content-around" id="forecast">
-                        <card class="col-2 col-md-5 col-xl-2 mt-2 bg-secondary text-white text-weight-bold" id="day1">
-                            <span class="forecast-date"></span>
-                            <span class="forecast-img"></span>
-                            <span class="forecast-temp"></span>
-                            <span class="forecast-wind"></span>
-                            <span class="forecast-humidity"></span>
-                        </card>
-                        <card class="col-2 col-md-5 col-xl-2 mt-2 bg-secondary" id="day2">
-                            <span class="forecast-date"></span>
-                            <span class="forecast-img"></span>
-                            <span class="forecast-temp"></span>
-                            <span class="forecast-wind"></span>
-                            <span class="forecast-humidity"></span>
-                        </card>
-                        <card class="col-2 col-md-5 col-xl-2 mt-2 bg-secondary" id="day3">
-                            <span class="forecast-date"></span>
-                            <span class="forecast-img"></span>
-                            <span class="forecast-temp"></span>
-                            <span class="forecast-wind"></span>
-                            <span class="forecast-humidity"></span>
-                        </card>
-                        <card class="col-2 col-md-5 col-xl-2 mt-2 bg-secondary" id="day4">
-                            <span class="forecast-date"></span>
-                            <span class="forecast-img"></span>
-                            <span class="forecast-temp"></span>
-                            <span class="forecast-wind"></span>
-                            <span class="forecast-humidity"></span>
-                        </card>
-                        <card class="col-2 col-md-5 col-xl-2 mt-2 bg-secondary" id="day5">
-                            <span class="forecast-date"></span>
-                            <span class="forecast-img"></span>
-                            <span class="forecast-temp"></span>
-                            <span class="forecast-wind"></span>
-                            <span class="forecast-humidity"></span>
-                        </card>
+                    <div class="row m-auto card-deck justify-content-between" id="forecast">
+                        <!-- JS dynamic forecast cards -->
                     </div>
                 </div>
             </div>

@@ -90,5 +90,29 @@ var showWeather = function(temperature, wind, humidity, uvIndex, weatherIcon, fo
     else if (uvIndex > 7.99) {
         searchedUVIndex.setAttribute("style", "color: white; background-color: red; margin-left: 5px; padding: 2px 15px; border-radius:6px");
     }
+
+    var forecastCard = `
+    <card class="card mx-4 pr-4 pb-3 pl-1 text-white font-weight-bold" id="">
+        <span class="forecast-date m-1"></span>
+        <img class="forecast-img m-1">
+        <span class="forecast-temp m-1"></span>
+        <span class="forecast-wind m-1"></span>
+        <span class="forecast-humidity m-1"></span>
+    </card>`
+
+    // display 5-day forecast
+    for (i = 0; i < 5; i++) {
+        var forecastCardEl = document.createElement("div");
+        forecastCardEl.innerHTML = forecastCard;
+        document.querySelector("#forecast").appendChild(forecastCardEl);
+        document.querySelectorAll(".forecast-date")[i].textContent = moment().add(i+1, 'd').format('l');
+        document.querySelectorAll(".forecast-img")[i].setAttribute("src", iconsURL + forecast[i].weather[0].icon + "@2x.png");
+        document.querySelectorAll(".forecast-temp")[i].textContent = "Temp: " + forecast[i].temp.day + "° F";
+        document.querySelectorAll(".forecast-wind")[i].textContent = "Wind: " + forecast[i].wind_speed + " MPH";
+        document.querySelectorAll(".forecast-humidity")[i].textContent = "Humidity: " + forecast[i].humidity + "%";
+    }
 }
+
+
+
 // searchFormEl.addEventListener("submit", formSearchHandler);
