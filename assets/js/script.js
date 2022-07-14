@@ -19,8 +19,8 @@ var searchedUVIndex = document.querySelector("#weather-uvi");
 var iconsURL = "http://openweathermap.org/img/wn/";
 
 // template for dynamically generated forecast cards
-var forecastCard = `
-<card class="card mx-4 pr-4 pb-3 pl-1 text-white font-weight-bold" id="">
+var forecastCard = 
+`<card class="card mx-4 pr-4 pb-3 pl-1 text-white font-weight-bold" id="">
     <span class="forecast-date m-1"></span>
     <img class="forecast-img m-1">
     <span class="forecast-temp m-1"></span>
@@ -128,14 +128,17 @@ searchFormEl.addEventListener("submit", function(event) {
         forecast.innerHTML = "";
 
         citiesArray.push(userCity);
-        localStorage.setItem('cities', JSON.stringify(citiesArray));
+
+        var savedCities = JSON.parse(localStorage.getItem("cities")) || [];
+
+        localStorage.setItem('cities', JSON.stringify(savedCities.concat(citiesArray)));
         console.log("citiesArray: " + citiesArray);
 
         var previousCityBtn = document.createElement("button");
         previousCityBtn.setAttribute("type", "button");
         previousCityBtn.setAttribute("class", "btn btn-block btn-light btn-outline-dark d-block text-center mt-2");
         previousCityBtn.textContent = userCity;
-        previousCityBtn.addEventListener ("click", searchHistory);
+        previousCityBtn.addEventListener("click", searchHistory);
 
         document.querySelector("#search-history").appendChild(previousCityBtn);
 
@@ -148,7 +151,7 @@ var searchHistory = function(event) {
     event.preventDefault();
     userCity = event.target.textContent;
     console.log(userCity + " button clicked");
-    forecast = document.querySelectorAll("#forecast");
+    forecast = document.querySelector("#forecast");
     forecast.innerHTML = "";
     getLatLon(userCity);
 };
