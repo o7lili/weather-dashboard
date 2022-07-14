@@ -5,7 +5,7 @@
 }
 
 header {
-    background-image: linear-gradient(to right, rgb(0, 110, 255), indigo);
+    background-image: linear-gradient(to right, rgb(255, 128, 70), rgb(119, 2, 2), rgb(69, 36, 129));
 }
 
 .card {

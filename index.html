@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Weather Dashboard</title>
 </head>
-<body>
+<body class="bg-warning">
     <div class="p-2">
         <header class="h2 p-2 text-white font-weight-bold text-center">Weather Dashboard</header>
     </div>
@@ -20,7 +20,7 @@
                 <form id="search-form" class="pb-2 border-bottom border-secondary">
                     <label class="h3 font-weight-bold" for="city">Search for a City:</label>
                     <input type="text" name="city" id="city" placeholder="Enter city name" autofocus="true" class="form-control d-block rounded" />
-                    <button type="button" class="btn btn-block btn-primary d-block text-center bg-primary mt-2" id="search-btn">Search</button>
+                    <button type="submit" class="btn btn-block btn-dark btn-outline-light d-block text-center mt-2" id="search-btn">Search</button>
                 </form>
                 <div id="search-history">
                     <!-- previously searched cities -->
@@ -28,10 +28,10 @@
             </nav>
             <!-- user searched city current weather info -->
             <div class="col-12 col-md-9 align-item-center">
-                <div id="weather" class="row  p-2 mt-2 border border-primary rounded container ">
+                <div id="weather" class="row  p-2 mt-2 border border-primary rounded container bg-light">
                     <div id="weather-header" class="row align-item-center font-weight-bold col-12 col-md-9">
                         <h3 id="weather-city" class="p-1"></h3>
-                        <img alt="" id="weather-icon">
+                        <img alt="" id="weather-icon" class="bg-secondary rounded">
                     </div>
                     <div id="weather-info" class="col-12 col-md-9">
                         <p class="temp row">

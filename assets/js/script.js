@@ -6,6 +6,7 @@ var userCity = "Raleigh";
 
 // variables for searching section of page
 var searchFormEl = document.querySelector("#search-form");
+var searchHistory = document.querySelector("#search-history");
 
 // variables for user searched city
 var searchedCity = document.querySelector("#weather-city");
@@ -15,7 +16,20 @@ var searchedTemp = document.querySelector("#weather-temp");
 var searchedWind = document.querySelector("#weather-wind");
 var searchedHumidity = document.querySelector("#weather-humidity");
 var searchedUVIndex = document.querySelector("#weather-uvi");
-var iconsURL = "http://openweathermap.org/img/wn/" 
+var iconsURL = "http://openweathermap.org/img/wn/";
+
+// template for dynamically generated forecast cards
+var forecastCard = `
+<card class="card mx-4 pr-4 pb-3 pl-1 text-white font-weight-bold" id="">
+    <span class="forecast-date m-1"></span>
+    <img class="forecast-img m-1">
+    <span class="forecast-temp m-1"></span>
+    <span class="forecast-wind m-1"></span>
+    <span class="forecast-humidity m-1"></span>
+</card>`
+
+// previously searched cities array
+citiesArray = [];
 
 // API request for latitude and longitude geo data
 var getLatLon = function() {
@@ -91,15 +105,6 @@ var showWeather = function(temperature, wind, humidity, uvIndex, weatherIcon, fo
         searchedUVIndex.setAttribute("style", "color: white; background-color: red; margin-left: 5px; padding: 2px 15px; border-radius:6px");
     }
 
-    var forecastCard = `
-    <card class="card mx-4 pr-4 pb-3 pl-1 text-white font-weight-bold" id="">
-        <span class="forecast-date m-1"></span>
-        <img class="forecast-img m-1">
-        <span class="forecast-temp m-1"></span>
-        <span class="forecast-wind m-1"></span>
-        <span class="forecast-humidity m-1"></span>
-    </card>`
-
     // display 5-day forecast
     for (i = 0; i < 5; i++) {
         var forecastCardEl = document.createElement("div");
@@ -113,6 +118,56 @@ var showWeather = function(temperature, wind, humidity, uvIndex, weatherIcon, fo
     }
 }
 
+searchFormEl.addEventListener("submit", function(event) {
+    event.preventDefault();
 
+    userCity = document.querySelector("#city").value.trim();
+    if (userCity.length == 0) {return}
+    else {
+        forecast = document.querySelector("#forecast");
+        forecast.innerHTML = "";
 
-// searchFormEl.addEventListener("submit", formSearchHandler);
+        citiesArray.push(userCity);
+        localStorage.setItem('cities', JSON.stringify(citiesArray));
+        console.log("citiesArray: " + citiesArray);
+
+        var previousCityBtn = document.createElement("button");
+        previousCityBtn.setAttribute("type", "button");
+        previousCityBtn.setAttribute("class", "btn btn-block btn-light btn-outline-dark d-block text-center mt-2");
+        previousCityBtn.textContent = userCity;
+        previousCityBtn.addEventListener ("click", searchHistory);
+
+        document.querySelector("#search-history").appendChild(previousCityBtn);
+
+        getLatLon(userCity);
+    }
+});
+
+// fetches weather info when dynamically created search history city buttons are clicked
+var searchHistory = function(event) {
+    event.preventDefault();
+    userCity = event.target.textContent;
+    console.log(userCity + " button clicked");
+    forecast = document.querySelectorAll("#forecast");
+    forecast.innerHTML = "";
+    getLatLon(userCity);
+};
+
+var displaySearchHistory = function(event) {
+    var pastCities = JSON.parse(localStorage.getItem('cities'));
+    if (pastCities) {
+        console.log("pastCities are: " + pastCities);
+        console.log(pastCities);
+        for (i = 0; i < pastCities.length; i++) {
+            var previousCityBtn = document.createElement("button");
+        previousCityBtn.setAttribute("type", "button");
+        previousCityBtn.setAttribute("class", "btn btn-block btn-light btn-outline-dark d-block text-center mt-2");
+        previousCityBtn.textContent = pastCities[i];
+        previousCityBtn.addEventListener ("click", searchHistory);
+
+        document.querySelector("#search-history").appendChild(previousCityBtn);
+        }
+    }
+};
+
+displaySearchHistory();
