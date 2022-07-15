@@ -34,7 +34,7 @@ citiesArray = [];
 // API request for latitude and longitude geo data
 var getLatLon = function() {
     // format direct openweathermap api url
-    var latLonURL = "http://api.openweathermap.org/geo/1.0/direct?q=" + userCity + "&appid=" + APIKey;
+    var latLonURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + userCity + "&appid=" + APIKey;
     var latitude;
     var longitude;
 
